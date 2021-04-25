@@ -14,13 +14,16 @@ def newMovie(request):
 def showMovie(request):
     return HttpResponse("placeholder for the show page")
 
+def editMovie(request, movie_id):
+    return HttpResponse("Placeholder for the edit page")
+
 # -------- PROCESS DATA -------- #
 
 def create(request):
     return redirect("/")
 
-def edit(request):
-    return HttpResponse("placeholder for the edit page")
+def processMovieEdit(request, movie_id):
+    return redirect(f"/movies/{movie_id}")
 
-def delete(request):
-    return redirect("/blogs")
+def deleteMovie(request):
+    return redirect("/movies")

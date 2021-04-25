@@ -5,6 +5,6 @@ urlpatterns = [
     path('home', views.home),
     path('movies/new', views.newMovie),
     path('movies/create', views.create),
-    path('movies/<number>', views.showMovie),
-    path('movies/<number>/edit', views.edit)
+    path('movies/<movie_id>', views.showMovie),
+    path('movies/<movie_id>/edit', views.editMovie)
 ]
