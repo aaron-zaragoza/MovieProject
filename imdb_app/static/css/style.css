@@ -1,0 +1,64 @@
+header {
+    padding: 15px;
+    padding-right: 55px;
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    background-image: url("header-background.jpg");
+    background-size: cover;
+    background-color: rgba(0, 0, 0, .3);
+    background-blend-mode: multiply;
+    align-items: center;
+    color: whitesmoke;
+
+}
+
+body, html {
+    background-color: #170a19;
+    height: 100%;
+}
+
+main {
+    background-color: #f4f4f4;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 25px;
+    min-height: 100%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: #77628c;
+    color: white;
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+#member-login {
+    font-size: medium;
+}
+
+#header-left-side {
+    display: inline-block;
+}
+
+#logo {
+    height: 50px;
+}
+
+#top-section-home {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#site-desc-home {
+    max-width: 600px;
+}

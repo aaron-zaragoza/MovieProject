@@ -1,19 +1,23 @@
 from django.shortcuts import render, HttpResponse, redirect
 
+# -------- RENDER VIEWS -------- #
+
 def index(request):
-    return redirect("/blogs")
+    return redirect("/home")
 
-def blogs(request):
-    return HttpResponse("hello world")
+def home(request):
+    return render(request, "home.html")
 
-def newBlog(request):
-    return HttpResponse("Place holder for a new blog form")
+def newMovie(request):
+    return render(request, "new_movie.html")
+
+def showMovie(request):
+    return HttpResponse("placeholder for the show page")
+
+# -------- PROCESS DATA -------- #
 
 def create(request):
     return redirect("/")
-
-def show(request):
-    return HttpResponse("placeholder for the show page")
 
 def edit(request):
     return HttpResponse("placeholder for the edit page")
