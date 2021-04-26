@@ -1,12 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect
+import re
 
-# -------- RENDER VIEWS -------- #
+# -------- RENDER TEMPLATES -------- #
 
 def index(request):
-    return redirect("/home")
+    return redirect("/welcome")
 
-def home(request):
-    return render(request, "home.html")
+def welcome(request):
+    return render(request, "welcome.html")
 
 def newMovie(request):
     return render(request, "new_movie.html")
@@ -19,7 +20,7 @@ def editMovie(request, movie_id):
 
 # -------- PROCESS DATA -------- #
 
-def create(request):
+def createMovie(request):
     return redirect("/")
 
 def processMovieEdit(request, movie_id):
