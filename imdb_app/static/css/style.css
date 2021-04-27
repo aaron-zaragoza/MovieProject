@@ -1,8 +1,8 @@
 header {
     padding: 15px;
     padding-right: 55px;
-    display: flex;
-    justify-content: space-between;
+
+
     vertical-align: center;
     background-image: url("header-background.jpg");
     background-size: cover;
@@ -10,41 +10,52 @@ header {
     background-blend-mode: multiply;
     align-items: center;
     color: whitesmoke;
-
 }
 
 body, html {
     background-color: #170a19;
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: auto;
+    display: flex;
+    justify-content: center;
 }
 
 main {
     background-color: #f4f4f4;
-    margin-left: 50px;
     margin-right: 50px;
     padding: 25px;
     padding-right: 45px;
     padding-left: 45px;
     min-height: 100%;
+    max-width: 1200px;
 }
 
 footer {
+    border-top: 1px solid black;
+    padding-top: 25px;
     display: flex;
     justify-content: center;
+
 }
 
 button {
-    background-color: #77628c;
+    background-color: #6886c5;
     color: white;
     padding: 10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 5px;
     border: 0px;
 }
 
+input {
+    margin-bottom: 10px;
+}
+
 #member-login {
     font-size: medium;
+    padding-left: 40px;
 }
 
 #register-panel {
@@ -69,4 +80,64 @@ button {
 
 #site-desc-home {
     max-width: 600px;
+    margin-right: 20px;
 }
+
+#filler-div {
+    min-height: 200px;
+}
+
+/********** THE HOMEPAGE SLIDER **********/
+.slider-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+    background-color: white;
+    margin-top: 25px;
+
+}
+
+.slider {
+    width: 600px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.slides {
+    width: 500%;
+    height: 300px;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 20%;
+    transition: 2s;
+}
+
+.slide img {
+    width: 600px;
+    height: 300px;
+}
+
+.navigation-manual {
+    position: absolute;
+    width: 600px;
+    margin: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid blue;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn: notlast

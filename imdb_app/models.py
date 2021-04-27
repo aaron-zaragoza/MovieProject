@@ -16,7 +16,7 @@ class UserManager(models.Manager):
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
         if not EMAIL_REGEX.match(postData['email']):
-            errors['email'] = "Invalid email address!"
+            errors['email'] = "Invalid email address"
         
         user_list = User.objects.filter(email = postData['email'])
 
