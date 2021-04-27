@@ -23,7 +23,6 @@ body, html {
 
 main {
     background-color: #f4f4f4;
-    margin-right: 50px;
     padding: 25px;
     padding-right: 45px;
     padding-left: 45px;
@@ -47,10 +46,20 @@ button {
     padding-bottom: 5px;
     border-radius: 5px;
     border: 0px;
+    cursor: pointer;
+    
+}
+
+button:hover {
+    background-color: lightskyblue;
 }
 
 input {
     margin-bottom: 10px;
+}
+
+a {
+    cursor: pointer;
 }
 
 #member-login {
@@ -76,6 +85,13 @@ input {
     display: flex;
     justify-content: space-between;
 
+}
+
+/*********** CLASSES **********/
+
+.error-messages {
+    font-size: small;
+    color: red;
 }
 
 #site-desc-home {
