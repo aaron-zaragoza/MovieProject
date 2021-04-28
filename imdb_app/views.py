@@ -6,7 +6,7 @@ import bcrypt
 # -------- RENDER -------- #
 
 def index(request):
-    return redirect("/welcome")
+    return redirect("/home")
 
 def home(request):
     return render(request, 'home_page.html')
@@ -16,7 +16,6 @@ def dashboard(request):
         return redirect('/home')
     context = {
         'logged_in_user' : User.objects.get(id = request.session['user_id']),
-        'all_books' : Movie.objects.all(),
     }
     return render(request, 'dashboard.html', context)
 
