@@ -111,6 +111,13 @@ def processNewMovie(request):
     print(newMovie.favorited_by)
     return redirect('/dashboard')
 
+def showAllMovies(request):
+    context = {
+        'logged_in_user' : User.objects.get(id = request.session['user_id']),
+        'all_movies' : Movie.objects.all(),
+    }
+    return render(request, 'all_movies.html', context)
+
 def processMovieEdit(request, movie_id):
     return redirect(f"/movies/{movie_id}")
 

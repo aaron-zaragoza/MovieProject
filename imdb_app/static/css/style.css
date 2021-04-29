@@ -1,10 +1,10 @@
 #home-header {
-    padding: 15px;
+    padding: 35px;
     padding-right: 55px;
     vertical-align: center;
-    background-image: url("header-background.jpg");
+    background-image: url("header-background-3.jpg");
     background-size: cover;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .1);
     background-blend-mode: multiply;
     align-items: center;
     color: whitesmoke;
@@ -17,6 +17,7 @@
     vertical-align: auto;
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 
 #top-section-dash {
@@ -24,11 +25,14 @@
     justify-content: space-between;
 }
 
-body, html {
+#web-body, #web-html {
+    margin: auto;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     vertical-align: auto;
-    padding: 0px;
+    max-width: 1200px;
+    background-color: #170a19;
+
 }
 
 main {
@@ -66,12 +70,13 @@ button:hover {
 
 input {
     margin-bottom: 10px;
+    margin-right: 4px;
 }
 
 a {
     cursor: pointer;
 }
-
+/********** FORMS AND INPUTS **********/
 #member-login {
     font-size: medium;
     padding-left: 40px;
@@ -94,10 +99,6 @@ a {
 
 #header-left-side {
     display: inline-block;
-}
-
-#logo {
-    height: 50px;
 }
 
 #top-section-home {
@@ -133,6 +134,8 @@ a {
 .nav-details {
     display: flex;
 }
+
+
 
 #site-desc-home {
     max-width: 600px;

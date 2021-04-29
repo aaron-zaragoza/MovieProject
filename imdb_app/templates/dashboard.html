@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="web-html">
 <head>
     {% load static %}
     <meta charset="UTF-8">
@@ -16,12 +16,14 @@
         <p>
             <a href="/dashboard">Dashboard</a>
             |
+            <a href="/movies/all">All Movies</a>
+            |
             <a href="/logout">Logout</a>
         </p>
     </div>
 
 </header>
-<body>
+<body id="web-body">
     <main>
         <div>
             <h1>Welcome, {{logged_in_user.first_name}}!</h1>
@@ -34,45 +36,32 @@
                     {% csrf_token %}
                     <div>
                         <label>
-                            Movie Title
+                            Movie Title:
                             <input type="text" name="title" />
                         </label>
                     </div>
                     <div>
                         <label>
-                            Release Date
+                            Release Date:
                             <input type="date" name="release_date" />
                         </label>
                     </div>
                     <div>
                         <label>
-                            Duration(Minutes)
+                            Duration(Minutes):
                             <input type="number" name="duration" />
                         </label>
                     </div>
                     <div>
-                        <label>Description</label>
+                        <label>Description:</label>
                     </div>
-                    <textarea name="desc" cols="30" rows="10"></textarea>
+                    <textarea name="desc" cols="35" rows="8"></textarea>
                     <div>
                         <button type="submit">Add Movie</button>
                     </div>
                 </form>
             </div>
-            <!-- LIST OF ALL MOVIES -->
-            <div id="movie-list">
-                <h2>All Movies</h2>
-                <ul>
-                    {% for movie in all_movies %}
-                        <li><a href="/movie_info/{{movie.id}}">{{movie.title}}</a></li>
-                        <li>{{movie.added_by.first_name}} {{movie.added_by.last_name}}</li>
-                        <li>{{movie.desc}}</li>
-                        {% if this_movie.added_by.id == request.session.user_id %}
-                            <li><a href="/add_to_favorites/{{movie.id}}/{{current_user.id}}">Add to Favorites</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
+
         </div>
     </main>
 </body>

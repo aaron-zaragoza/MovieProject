@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" id="web-html">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>All Movies</title>
+</head>
+<header class="nav-header">
+    <div>
+        <h2>MyMovieList</h2>
+    </div>
+    <div class="nav-details">
+        <p>
+            <a href="/dashboard">Dashboard</a>
+            |
+            <a href="/movies/all">All Movies</a>
+            |
+            <a href="/logout">Logout</a>
+        </p>
+    </div>
+
+</header>
+<body id="web-body">
+    <main>
+        <div>
+            <!-- LIST OF ALL MOVIES -->
+            <h1>All Movies</h1>
+            <div class="movie-list">
+                <ul>
+                    {% for movie in all_movies %}
+                        <li><a href="/movie_info/{{movie.id}}">{{movie.title}}</a></li>
+                        {% if this_movie.added_by.id == request.session.user_id %}
+                            <li><a href="/add_to_favorites/{{movie.id}}/{{current_user.id}}">Add to Favorites</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
