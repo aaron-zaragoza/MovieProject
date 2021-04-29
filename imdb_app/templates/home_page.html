@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="home-html">
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>MyMovieList</title>
 </head>
-<header>
+<header id="home-header">
     <div id="header-left-side">
 
         <h1>MyMovieList</h1>
@@ -19,20 +18,18 @@
     <!-- ******** MEMBER LOGIN ******** -->
     <div id="member-login">
         <h4>Member Login</h4>
-        <form action="">
+        <form action="/login" method="post">
             {% csrf_token %}
             <div>
                 <div>
                     <label class="form-label">
-
-                        <input type="text" placeholder="Username"/>
+                        <input type="text" placeholder="Username" name="username"/>
                     </label>
                 </div>
 
                 <div>
                     <label class="form-label">
-
-                        <input type="password" placeholder="Password"/>
+                        <input type="password" placeholder="Password" name="password"/>
                     </label>
                 </div>
                 <div>
@@ -40,9 +37,20 @@
                 </div>
             </div>
         </form>
+        <div>
+            <!-- ERROR MESSAGES IF ANY -->
+            {% if messages %}
+            <ul class="login-errors">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <!-- *********** -->
+        </div>
     </div>
 </header>
-<body>
+<body id="home-body">
     <main>
 
         <div id="top-section-home">
@@ -65,37 +73,59 @@
                 <h2>Register</h2>
                 <form action="/process_registration" method="post">
                     {% csrf_token %}
-                    <div>
-                        <label>
-                            First Name
-                            <input type="text" name="first_name"/>
-                        </label>
-                        <label>
-                            Last Name
-                            <input type="text" name="last_name"/>
-                        </label>
+
+                    <!-- FIRST ROW IN REGISTRATION -->
+                    <div class="regisration-row">
+                        <div>
+                            <label class="">
+                                First Name
+                                <input type="text" name="first_name"/>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="">
+                                Last Name
+                                <input type="text" name="last_name"/>
+                            </label>
+                        </div>
                     </div>
-                    <div>
-                        <label>
-                            Email
-                            <input type="text" name="email"/>
-                            Username
-                            <input type="text" name="username"/>
-                        </label>
+                    <!-- SECOND ROW IN REGISTRATION -->
+                    <div class="registration-row">
+                        <div>
+                            <label class="">
+                                Email
+                                <input type="text" name="email"/>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="">
+                                Username
+                                <input type="text" name="username"/>
+                            </label>
+                        </div>
+
                     </div>
-                    <div>
-                        <label>
-                            Password
-                            <input type="password" name="password"/>
-                        </label>
-                        <label>
-                            Confirm Password
-                            <input type="password" name="confirm_password"/>
-                        </label>
+                    <!-- THIRD ROW IN REGISTRATION -->
+                    <div class="registration-row">
+                        <div>
+                            <label class="">
+                                Password
+                                <input type="password" name="password"/>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="">
+                                Confirm Password
+                                <input type="password" name="confirm_password"/>
+                            </label>
+                        </div>
+
                     </div>
+                    <!-- REGISTRATION BUTTON -->
                     <div>
                         <button type="submit">Register</button>
                     </div>
+
                 </form>
 
                     <!-- ERROR MESSAGES IF ANY -->

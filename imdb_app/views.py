@@ -19,6 +19,31 @@ def dashboard(request):
     }
     return render(request, 'dashboard.html', context)
 
+def login(request):
+    # 1. CHECK TO SEE IF THE USERNAME EXISTS WITHIN DB
+    user_list = User.objects.filter(username = request.POST['username'])
+    # IF USERNAME DOESN'T EXIST WITH DB, REDIRECT WITH ERROR MESSAGE
+    if len(user_list) == 0:
+        messages.error(request, "Invalid credentials")
+        return redirect("/dashboard")
+    # If email exists, check password
+    logged_user = user_list[0]
+    if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
+        # PASSWORD MATCHES
+        request.session['user_id'] = logged_user.id
+        print("******************************")
+        print("SUCCESSFULLY LOGGED IN USER")
+        print("******************************")
+        return redirect("/dashboard")
+    else:
+        # PASSWORD DOES NOT MATCH
+        messages.error(request, "INVALID CREDENTIALS")
+        return redirect("/home")
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')
+
 def newMovie(request):
     return render(request, "new_movie.html")
 
@@ -61,9 +86,30 @@ def processRegistration(request):
         print("***********************************")
     return redirect("/dashboard")
 
+def processNewMovie(request):
+    # validate new movie
+    errors = Movie.objects.validate_movie(request.POST)
+    # validations did not pass
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/dashboard')
+    # process new movie
+    # validations pass
+    newMovie = Movie.objects.create(
+        title = request.POST['title'],
+        release_date = request.POST['release_date'],
+        desc = request.POST['desc'],
+        duration = request.POST['duration'],
+        added_by = User.objects.get(id =  request.session['user_id']),
+    )
+    newMovie.favorited_by.add(User.objects.get(id =  request.session['user_id']))
 
-def createMovie(request):
-    return redirect("/")
+    print('******************************************')
+    print(newMovie, 'has just been created')
+    print('******************************************')
+    print(newMovie.favorited_by)
+    return redirect('/dashboard')
 
 def processMovieEdit(request, movie_id):
     return redirect(f"/movies/{movie_id}")

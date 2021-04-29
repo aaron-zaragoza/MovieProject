@@ -1,8 +1,6 @@
-header {
+#home-header {
     padding: 15px;
     padding-right: 55px;
-
-
     vertical-align: center;
     background-image: url("header-background.jpg");
     background-size: cover;
@@ -12,13 +10,25 @@ header {
     color: whitesmoke;
 }
 
-body, html {
+#home-body, #home-html {
     background-color: #170a19;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     vertical-align: auto;
     display: flex;
     justify-content: center;
+}
+
+#top-section-dash {
+    display: flex;
+    justify-content: space-between;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: auto;
+    padding: 0px;
 }
 
 main {
@@ -73,6 +83,15 @@ a {
     padding: 25px;
 }
 
+.form-label {
+    font-size: x-small;
+}
+
+.regisration-row {
+    display: flex;
+    justify-content: space-between;
+}
+
 #header-left-side {
     display: inline-block;
 }
@@ -94,6 +113,27 @@ a {
     color: red;
 }
 
+.login-errors {
+    font-size: small;
+    color: white;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #7189bf;
+    color: white;
+}
+
+.nav-details {
+    display: flex;
+}
+
 #site-desc-home {
     max-width: 600px;
     margin-right: 20px;
@@ -102,6 +142,7 @@ a {
 #filler-div {
     min-height: 200px;
 }
+
 
 /********** THE HOMEPAGE SLIDER **********/
 .slider-body {
@@ -156,4 +197,3 @@ a {
     transition: 1s;
 }
 
-.manual-btn: notlast
