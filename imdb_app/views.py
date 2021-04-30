@@ -24,8 +24,8 @@ def login(request):
     user_list = User.objects.filter(username = request.POST['username'])
     # IF USERNAME DOESN'T EXIST WITH DB, REDIRECT WITH ERROR MESSAGE
     if len(user_list) == 0:
-        messages.error(request, "Invalid credentials")
-        return redirect("/dashboard")
+        messages.error(request, "Incorrect Username")
+        return redirect("/home")
     # If email exists, check password
     logged_user = user_list[0]
     if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
@@ -37,7 +37,7 @@ def login(request):
         return redirect("/dashboard")
     else:
         # PASSWORD DOES NOT MATCH
-        messages.error(request, "INVALID CREDENTIALS")
+        messages.error(request, "Invalid Credentials")
         return redirect("/home")
 
 def logout(request):
@@ -47,8 +47,12 @@ def logout(request):
 def newMovie(request):
     return render(request, "new_movie.html")
 
-def showMovie(request):
-    return HttpResponse("placeholder for the show page")
+def showMovie(request, movie_id):
+    context = {
+        'logged_in_user' : User.objects.get(id = request.session['user_id']),
+        'this_movie' : Movie.objects.get(id = movie_id),
+    }
+    return render(request, 'movie_details.html', context)
 
 def editMovie(request, movie_id):
     return HttpResponse("Placeholder for the edit page")
@@ -79,7 +83,7 @@ def processRegistration(request):
             password = hash_pw
         )
         # STORE NEW USER ID INSIDE OF SESSION
-        request.session['new_user'] = new_user
+        # request.session['new_user'] = new_user
         request.session['user_id'] = new_user.id
         print("***********************************")
         print(f"NEW USER CREATED: {new_user.username}")
@@ -109,7 +113,7 @@ def processNewMovie(request):
     print(newMovie, 'has just been created')
     print('******************************************')
     print(newMovie.favorited_by)
-    return redirect('/dashboard')
+    return redirect('/movies/all')
 
 def showAllMovies(request):
     context = {
@@ -121,5 +125,7 @@ def showAllMovies(request):
 def processMovieEdit(request, movie_id):
     return redirect(f"/movies/{movie_id}")
 
-def deleteMovie(request):
-    return redirect("/movies")
+def deleteMovie(request, movie_id):
+    movie_to_delete = Movie.objects.get(id = movie_id)
+    movie_to_delete.delete()
+    return redirect("/movies/all")

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="web-html">
+<html lang="en" class="web-html">
 <head>
     {% load static %}
     <meta charset="UTF-8">
@@ -23,22 +23,58 @@
     </div>
 
 </header>
-<body id="web-body">
+<body class="web-body">
     <main>
-        <div>
-            <!-- LIST OF ALL MOVIES -->
-            <h1>All Movies</h1>
-            <div class="movie-list">
-                <ul>
-                    {% for movie in all_movies %}
-                        <li><a href="/movie_info/{{movie.id}}">{{movie.title}}</a></li>
-                        {% if this_movie.added_by.id == request.session.user_id %}
-                            <li><a href="/add_to_favorites/{{movie.id}}/{{current_user.id}}">Add to Favorites</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+        <div id="all-movies-section">
+            <div>
+                <!-- LIST OF ALL MOVIES -->
+                <h1>All Movies</h1>
+                <div class="movie-list">
+                    <ul>
+                        {% for movie in all_movies %}
+                            <li><a href="/movies/{{movie.id}}">{{movie.title}}</a></li>
+                            {% if this_movie.added_by.id == request.session.user_id %}
+                                <li><a href="/add_to_favorites/{{movie.id}}/{{current_user.id}}">Add to Favorites</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+    
+            <div>
+                <h2>Add A New Movie:</h2>
+                <form action="/movies/processNewMovie" method="post">
+                    <input type="hidden" name="current_user" value="{{current_user}}">
+                    {% csrf_token %}
+                    <div>
+                        <label>
+                            Movie Title:
+                            <input type="text" name="title" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Release Date:
+                            <input type="date" name="release_date" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Duration(Minutes):
+                            <input type="number" name="duration" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>Description:</label>
+                    </div>
+                    <textarea name="desc" cols="35" rows="8"></textarea>
+                    <div>
+                        <button type="submit">Add Movie</button>
+                    </div>
+                </form>
             </div>
         </div>
+
     </main>
 </body>
 </html>

@@ -13,7 +13,7 @@ class UserManager(models.Manager):
         if len(postData['last_name']) < 2:
             errors['last_name'] = 'Last name must be longer than 1 character'
             
-        if len(postData['username']) < 2:
+        if len(postData['username']) < 6:
             errors['username'] = 'Username must be at least 6 characters long'
         
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')

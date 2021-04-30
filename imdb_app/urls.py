@@ -12,5 +12,6 @@ urlpatterns = [
     path('movies/<movie_id>', views.showMovie),
     path('movies/<movie_id>/edit', views.editMovie),
     path('movies/<movie_id>/update', views.processMovieEdit),
+    path('movies/delete/<movie_id>', views.deleteMovie),
 
 ]

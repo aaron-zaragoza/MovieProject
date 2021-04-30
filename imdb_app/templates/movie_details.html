@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" class="web-html">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>View Movie</title>
+</head>
+<header class="nav-header">
+    <div>
+        <h2>MyMovieList</h2>
+    </div>
+    <div class="nav-details">
+        <p>
+            <a href="/dashboard">Dashboard</a>
+            |
+            <a href="/movies/all">All Movies</a>
+            |
+            <a href="/logout">Logout</a>
+        </p>
+    </div>
+
+</header>
+<body class="web-body">
+    <main>
+        <div id="movie-details">
+            <ul>
+                {% if this_movie.added_by.id == request.session.user_id %}
+                    <form action="/process_movie_update/{{this_movie.id}}" method="post">
+                        {% csrf_token %}
+                        <h2>
+                            Title:
+                            <input type="text" name="title" value="{{this_movie.title}}">
+                        </h2>
+
+                        <h3>Added By:</h3>
+                        <p>{{this_movie.added_by.first_name}} {{this_movie.added_by.last_name}}</p>
+
+                        <h3>Added On:</h3>
+                        <p>{{this_movie.created_at}}</p>
+
+                        <h3>Last Updated:</h3>
+                        <p>{{this_movie.updated_at}}</p>
+                        <div>
+                            <label>Description:</label>
+                        </div>
+                        <textarea name="desc" cols="30" rows="10">{{this_movie.desc}}</textarea>
+                        <button type="submit">Update</button>
+                    </form>
+                    <a href="/delete/{{this_movie.id}}">Delete this Movie</a>
+    
+                {% else %}
+                        <h2>{{this_movie.title}}</h2>
+                        <li>Added By: {{this_movie.added_by.first_name}} {{this_movie.added_by.last_name}}</li>
+                        <li>Added On: {{this_movie.created_at}}</li>
+                        <li>Last Updated: {{this_movie.updated_at}}</li>
+                        <li>Description: {{this_movie.desc}}</li>
+                {% endif %}
+                    <!-- IF THERE ARE ANY ERRORS DISPLAY HERE -->
+                {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags}}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="movie-favorites">
+            <ul>
+                <h2>Users Who Liked This Movie:</h2>
+    
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
