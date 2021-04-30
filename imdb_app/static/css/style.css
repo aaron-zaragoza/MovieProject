@@ -4,7 +4,7 @@
     vertical-align: center;
     background-image: url("header-background-3.jpg");
     background-size: cover;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, .3);
     background-blend-mode: multiply;
     align-items: center;
     color: whitesmoke;
@@ -66,11 +66,27 @@ button {
     border-radius: 5px;
     border: 0px;
     cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.delete-button {
+    background-color: #d8345f;
+    color: white;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    border: 0px;
+    cursor: pointer;
     
 }
 
 button:hover {
     background-color: lightskyblue;
+}
+
+.delete-button:hover {
+    background-color: #d35d6e;
 }
 
 input {

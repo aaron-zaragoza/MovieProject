@@ -46,16 +46,29 @@
                             <label>Description:</label>
                         </div>
                         <textarea name="desc" cols="30" rows="10">{{this_movie.desc}}</textarea>
-                        <button type="submit">Update</button>
+                        <div>
+                            <button type="submit">Update Movie</button>
+                        </div>
                     </form>
-                    <a href="/delete/{{this_movie.id}}">Delete this Movie</a>
+                    
+                    <div>
+                        <form action="/movies/delete/{{this_movie.id}}">
+                            <button class="delete-button" type="submit">Delete Movie</button>
+                        </form>
+                    </div>
     
                 {% else %}
-                        <h2>{{this_movie.title}}</h2>
-                        <li>Added By: {{this_movie.added_by.first_name}} {{this_movie.added_by.last_name}}</li>
-                        <li>Added On: {{this_movie.created_at}}</li>
-                        <li>Last Updated: {{this_movie.updated_at}}</li>
-                        <li>Description: {{this_movie.desc}}</li>
+                        <h1>{{this_movie.title}}</h1>
+                        <h3>Release Date:</h3>
+                        <p>{{this_movie.release_date}}</p>
+                        <h3>Added By:</h3>
+                        <p>{{this_movie.added_by.first_name}} {{this_movie.added_by.last_name}}</p>
+                        <h3>Added On:</h3>
+                        <p>{{this_movie.created_at}}</p>
+                        <h3>Last Updated:</h3>
+                        <p>{{this_movie.updated_at}}</p>
+                        <h3>Description:</h3>
+                        <p>{{this_movie.desc}}</p>
                 {% endif %}
                     <!-- IF THERE ARE ANY ERRORS DISPLAY HERE -->
                 {% if messages %}
