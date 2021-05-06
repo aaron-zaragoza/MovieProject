@@ -123,7 +123,22 @@ def showAllMovies(request):
     return render(request, 'all_movies.html', context)
 
 def processMovieEdit(request, movie_id):
-    return redirect(f"/movies/{movie_id}")
+    # validate new movie
+    errors = Movie.objects.validate_movie(request.POST)
+    # validations did not pass
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect(f'/movies/{movie_id}')
+    # process new movie
+    # validations pass
+    movie_to_update = Movie.objects.get(id = movie_id)
+    movie_to_update.title = request.POST['title']
+    movie_to_update.release_date = request.POST['release_date']
+    movie_to_update.desc = request.POST['desc']
+    movie_to_update.duration = request.POST['duration']
+    movie_to_update.save()
+    return redirect(f'/movies/{movie_id}')
 
 def deleteMovie(request, movie_id):
     movie_to_delete = Movie.objects.get(id = movie_id)

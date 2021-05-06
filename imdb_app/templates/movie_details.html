@@ -27,12 +27,22 @@
         <div id="movie-details">
             <ul>
                 {% if this_movie.added_by.id == request.session.user_id %}
-                    <form action="/process_movie_update/{{this_movie.id}}" method="post">
+                    <form action="/movies/{{this_movie.id}}/update" method="post">
                         {% csrf_token %}
                         <h2>
                             Title:
                             <input type="text" name="title" value="{{this_movie.title}}">
                         </h2>
+
+                        <div>
+                            <h3>Release Date:</h3>
+                            <input type="date" name="release_date" value="{{this_movie.release_date | safe}}" />
+                        </div>
+
+                        <div>
+                            <h3>Duration(Minutes):</h3>
+                            <input type="number" name="duration" value="{{this_movie.duration}}"/>
+                        </div>
 
                         <h3>Added By:</h3>
                         <p>{{this_movie.added_by.first_name}} {{this_movie.added_by.last_name}}</p>
@@ -42,6 +52,7 @@
 
                         <h3>Last Updated:</h3>
                         <p>{{this_movie.updated_at}}</p>
+
                         <div>
                             <label>Description:</label>
                         </div>
@@ -61,14 +72,19 @@
                         <h1>{{this_movie.title}}</h1>
                         <h3>Release Date:</h3>
                         <p>{{this_movie.release_date}}</p>
-                        <h3>Added By:</h3>
-                        <p>{{this_movie.added_by.first_name}} {{this_movie.added_by.last_name}}</p>
-                        <h3>Added On:</h3>
-                        <p>{{this_movie.created_at}}</p>
-                        <h3>Last Updated:</h3>
-                        <p>{{this_movie.updated_at}}</p>
+                        <h3>Director(s):</h3>
+                        <p><i>(Coming soon)</i></p>
+                        <h3>Actors:</h3>
+                        <p><i>(Coming Soon)</i></p>
                         <h3>Description:</h3>
                         <p>{{this_movie.desc}}</p>
+                        <h4>Added By:</h4>
+                        <p>{{this_movie.added_by.first_name}} {{this_movie.added_by.last_name}}</p>
+                        <h4>Added On:</h4>
+                        <p>{{this_movie.created_at}}</p>
+                        <h4>Last Updated:</h4>
+                        <p>{{this_movie.updated_at}}</p>
+
                 {% endif %}
                     <!-- IF THERE ARE ANY ERRORS DISPLAY HERE -->
                 {% if messages %}

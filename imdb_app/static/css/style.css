@@ -82,7 +82,7 @@ button {
 }
 
 button:hover {
-    background-color: lightskyblue;
+    background-color: #556fb5;
 }
 
 .delete-button:hover {
@@ -97,6 +97,11 @@ input {
 a {
     cursor: pointer;
 }
+
+li {
+    margin-bottom: 5px;
+}
+
 /********** FORMS AND INPUTS **********/
 #member-login {
     font-size: medium;
@@ -107,10 +112,11 @@ a {
     border: 1px solid black;
     background-color: white;
     padding: 25px;
+    max-width: 300px;
 }
 
 .form-label {
-    font-size: x-small;
+    font-size: small;
 }
 
 .regisration-row {
@@ -128,11 +134,16 @@ a {
 
 }
 
+#home-favorite-movies {
+    min-width: 375px;
+}
+
 /*********** CLASSES **********/
 
 .error-messages {
     font-size: small;
     color: red;
+    margin-bottom: auto;
 }
 
 .login-errors {
