@@ -30,6 +30,15 @@
     justify-content: space-between;
 }
 
+#demo-login {
+    background-color: gray;
+    color: white;
+}
+
+#demo-login:hover {
+    background-color: lightgray;
+}
+
 .web-body, .web-html {
     margin: auto;
     height: 100%;

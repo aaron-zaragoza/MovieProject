@@ -38,6 +38,9 @@
             </div>
         </form>
         <div>
+        <div>
+            <button type="submit" id="demo-login" >Demo Login</button>
+        </div>
             <!-- ERROR MESSAGES IF ANY -->
             {% if messages %}
             <ul class="login-errors">    
@@ -57,15 +60,17 @@
             <!-- ******** SITE DESCRIPTION ******** -->
             <div id="site-desc-home">
                 <h2>Welcome to MyMovieList</h2>
-                <p>
-                    The site provides its users with a list-like system to organize and score movies and television shows. It facilitates finding users who share similar tastes and provides a large database of movies and television shows, added by community members and admins alike.
+                <p>This project was inspired by the Internet Movie Database (IMDb) and My Anime List (MAL). It provides full CRUD functionality to create, read, update, and delete the entries added by the user currently logged in.
+                </p>
+                <p><strong>Technologies: </strong>Python, Django, HTML, CSS, Mongoose, SQLite</p>
+                <p><strong>Challenges: </strong>The greatest challenge currently faced is related to the error messages generated from validations. When login/registration validations do not pass, the error messages appear on both forms. The simplest solution would be to display these forms on separate pages, but I would ideally like to display them both on the home page.</p>
+                <p><strong>Moving Forward: </strong>Now the basic CRUD functionality has been implemented, I can begin on improving the user interface and styling. While navigation is relatively straight-forward, I believe this app would benefit from a facelift.
                 </p>
                 <p>
-                    Members of the community can discover new movies or shows by filtering by genre, ranking, rating, or more. As new features become available, you will be able to customize and rank your personalized lists of movies to share with friends and add to your personal blog!
+                    I look forward to sharing these updates as they roll out!
                 </p>
-                <p>
-                    We welcome you and hope you enjoy!
-                </p>
+                <p>Thank you,</p>
+                <p>Aaron Zaragoza</p>
             </div>
 
             <!-- ******** REGISTRATION FORM ******** -->
@@ -139,46 +144,7 @@
             </div>
         </div>
 
-        <div class="slider-body">
-            <div class="slider">
-                <div class="slides">
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
 
-                    <div class="slide-first">
-                        <img src="" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="" alt="">
-                    </div>
-
-                    <!-- AUTOMATIC NAVIGATION START -->
-                    <div class="navigation-auto">
-                        <div class="auto-btn1"></div>
-                        <div class="auto-btn2"></div>
-                        <div class="auto-btn3"></div>
-                        <div class="auto-btn4"></div>
-                    </div>
-                    <!-- AUTOMATIC NAVIGATION END -->
-                </div>
-                <!-- MANUTAL NAVIATION START -->
-                <div class="navigaton-manual">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                </div>
-                <!-- MANUTAL NAVIGATION END -->
-            </div>
-        </div>
 
         <footer>
             <p>
